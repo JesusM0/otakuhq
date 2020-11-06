@@ -1,8 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
+<<<<<<< HEAD
 const resolvers = {
   Query: {
     // get a single user by their id
@@ -110,5 +110,8 @@ const resolvers = {
     },
   },
 };
+=======
+const resolvers = {};
+>>>>>>> 4c552963db28c5b448053e0479e2a1a47d3090c7
 
 module.exports = resolvers;
