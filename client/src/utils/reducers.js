@@ -8,7 +8,7 @@ const initialState = {
   cartOpen: false,
 };
 
-export const reducers = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   //   default:
   //     return state;
   // }
