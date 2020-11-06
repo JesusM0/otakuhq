@@ -29,6 +29,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
