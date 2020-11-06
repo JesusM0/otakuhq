@@ -5,7 +5,7 @@ const typeDefs = gql`
     animeId: ID
     title: String
     rated: String
-    description: Sring
+    description: String
     image: String
     link: String
   }
