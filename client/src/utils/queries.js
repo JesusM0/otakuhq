@@ -1,9 +1,16 @@
 import gql from 'graphql-tag';
 
-export const QUERY_USER = gql`
+export const GET_ME = gql`
   {
-    user {
-      username
+    me {
+      savedAnimes {
+        animeId
+        title
+        rated
+        description
+        image
+        link
+      }
     }
   }
 `;
