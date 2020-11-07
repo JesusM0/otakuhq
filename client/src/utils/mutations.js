@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_BOOK = gql`
+export const SAVE_Anime = gql`
   mutation saveAnime(
     $animeId: ID!
     $title: String
@@ -55,7 +55,7 @@ export const SAVE_BOOK = gql`
   }
 `;
 
-export const REMOVE_BOOK = gql`
+export const REMOVE_Anime = gql`
   mutation removeAnime($animeId: ID!) {
     removeAnime(animeId: $animeId) {
       _id
