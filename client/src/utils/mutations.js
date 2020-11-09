@@ -14,7 +14,7 @@ export const LOGIN_USER = gql`
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(userName: $username, email: $email, password: $password) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -43,7 +43,7 @@ export const SAVE_Anime = gql`
     ) {
       _id
       username
-      savedBooks {
+      savedAnimes {
         animeId
         title
         rated
