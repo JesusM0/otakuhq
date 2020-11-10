@@ -1,36 +1,44 @@
 import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
+import logo from '../../imgs/otakuhq-logo.png';
 
 function Nav() {
   if (Auth.loggedIn()) {
     return (
-      <div>
-        <ul className=''>
-          <li className=''>
-            {/* Link Goes Here */}
-            <Link to></Link>
+      <nav>
+        <div className="logo-box">
+          <img src={logo} alt="logo" className="logo" />
+        </div>
+        <ul className="nav">
+          <li>
+            <Link as={Link} to="/saved">
+              See your Anime List
+            </Link>
           </li>
-          <li className=''>
-            <a href='/' onClick={() => Auth.logout}>
+          <li>
+            <a href="/" onClick={() => Auth.logout}>
               Logout
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
     );
   } else {
     return (
-      <div className='container-tabs'>
-        <ul className='nav'>
-          <li className=''>
-            <Link to='/signup'>Signup</Link>
+      <nav>
+        <div className="logo-box">
+          <img src={logo} alt="logo" className="logo" />
+        </div>
+        <ul className="nav">
+          <li>
+            <Link to="/signup">Signup</Link>
           </li>
-          <li className=''>
-            <Link to='/login'>Login</Link>
+          <li>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
-      </div>
+      </nav>
     );
   }
 }

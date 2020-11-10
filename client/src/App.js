@@ -26,10 +26,10 @@ function App() {
       <Router>
         <>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/login' component={Login} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
       </Router>
