@@ -93,7 +93,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    // remove a book from `savedBooks`
+    
     removeAnime: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
