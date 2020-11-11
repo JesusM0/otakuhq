@@ -1,7 +1,6 @@
 import React from 'react';
 import { CardColumns, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import Auth from '../utils/auth';
 import { removeAnimeId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';

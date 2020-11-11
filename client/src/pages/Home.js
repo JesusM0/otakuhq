@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardColumns, Button } from 'react-bootstrap';
 import Nav from '../components/Nav';
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 import { searchJikanApi } from '../utils/API';
 import { saveAnimeIds, getSavedAnimeIds } from '../utils/localStorage';
 import video from '../imgs/video.mp4';
@@ -94,23 +95,23 @@ function Home() {
   };
 
   return (
-    <div className="container">
-      <section className="header">
+    <div className='container'>
+      <section className='header'>
         <Nav></Nav>
-        <video className="bg-video" autoPlay muted loop>
-          <source src={video} type="video/mp4" />
+        <video className='bg-video' autoPlay muted loop>
+          <source src={video} type='video/mp4' />
           Your browser is not supported!
         </video>
-        <div className="heading-primary">
-          <form className="search-bar" onSubmit={handleFormSubmit}>
+        <div className='heading-primary'>
+          <form className='search-bar' onSubmit={handleFormSubmit}>
             <input
-              className="heading-search-bar"
-              name="searchInput"
-              type="text"
+              className='heading-search-bar'
+              name='searchInput'
+              type='text'
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button className="heading-search-btn" type="submit">
+            <button className='heading-search-btn' type='submit'>
               Search
             </button>
           </form>
@@ -120,48 +121,50 @@ function Home() {
         <h2>
           {searchedAnimes.length
             ? `Viewing ${searchedAnimes.length} results:`
-            : 'Search for a book to begin'}
+            : 'Search Anime!'}
         </h2>
-        <CardColumns className="search-container carousel">
-          <Carousel breakPoints={breakPoints}>
-            {searchedAnimes.map((anime) => {
-              return (
-                <Item>
-                  <Card key={anime.animeId} className="anime-card">
-                    {anime.image ? (
-                      <Card.Img
-                        src={anime.image}
-                        alt={`The cover for ${anime.title}`}
-                        variant="top"
-                      />
-                    ) : null}
-                    <Card.Body>
-                      <Card.Title>{anime.title}</Card.Title>
-                      <p className="small">Rating: {anime.rating}</p>
-                      <p className="small">Score: {anime.score}/10</p>
-                      <Card.Text>{anime.description}</Card.Text>
-                      {Auth.loggedIn() && (
-                        <Button
-                          disabled={savedAnimeIds?.some(
-                            (savedAnimeId) => savedAnimeId === anime.animeId
-                          )}
-                          className="btn-block btn-info"
-                          onClick={() => handleSaveAnime(anime.animeId)}
-                        >
-                          {savedAnimeIds?.some(
-                            (savedAnimeId) => savedAnimeId === anime.animeId
-                          )
-                            ? 'This anime has already been saved!'
-                            : 'Save this anime!'}
-                        </Button>
-                      )}
-                    </Card.Body>
-                  </Card>
-                </Item>
-              );
-            })}
-          </Carousel>
-        </CardColumns>
+        <Link to=''>
+          <CardColumns className='search-container carousel'>
+            <Carousel breakPoints={breakPoints}>
+              {searchedAnimes.map((anime) => {
+                return (
+                  <Item>
+                    <Card key={anime.animeId} className='anime-card'>
+                      {anime.image ? (
+                        <Card.Img
+                          src={anime.image}
+                          alt={`The cover for ${anime.title}`}
+                          variant='top'
+                        />
+                      ) : null}
+                      <Card.Body>
+                        <Card.Title>{anime.title}</Card.Title>
+                        <p className='small'>Rating: {anime.rating}</p>
+                        <p className='small'>Score: {anime.score}/10</p>
+                        <Card.Text>{anime.description}</Card.Text>
+                        {Auth.loggedIn() && (
+                          <Button
+                            disabled={savedAnimeIds?.some(
+                              (savedAnimeId) => savedAnimeId === anime.animeId
+                            )}
+                            className='btn-block btn-info'
+                            onClick={() => handleSaveAnime(anime.animeId)}
+                          >
+                            {savedAnimeIds?.some(
+                              (savedAnimeId) => savedAnimeId === anime.animeId
+                            )
+                              ? 'This anime has already been saved!'
+                              : 'Save this anime!'}
+                          </Button>
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Item>
+                );
+              })}
+            </Carousel>
+          </CardColumns>
+        </Link>
         <PopularAnime />
       </div>
       <Footer />

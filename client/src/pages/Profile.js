@@ -1,11 +1,15 @@
-import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+// import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+// function Profile() {
+//   const state = useSelector(state => state);
 
-function Profile() {
-  return <div></div>;
-}
-export default Profile;
+//   if (state.searchSubmitted) {
+//       state.searchSubmitted = false;
+//   }
+
+//   const [profileView, setProfileView] = useState('');
+
+//   function radioButtonHandler(event) {
+//       setProfileView(event.target.value);
+//   }
