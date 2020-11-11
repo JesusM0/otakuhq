@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardColumns, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 import { removeAnimeId } from '../utils/localStorage';
@@ -84,6 +85,7 @@ function SavedAnimes() {
           );
         })}
       </CardColumns>
+      <Link to='/'>Back To Home</Link>
     </>
   );
 }
