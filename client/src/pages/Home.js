@@ -4,16 +4,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import Nav from '../components/Nav';
 import Auth from '../utils/auth';
 import { searchJikanApi } from '../utils/API';
-import { getSavedAnimeIds } from '../utils/localStorage';
+import { saveAnimeIds, getSavedAnimeIds } from '../utils/localStorage';
 import video from '../imgs/video.mp4';
+import { SAVE_ANIME } from '../utils/mutations';
+import { useMutation } from '@apollo/react-hooks';
 
 function Home() {
   const [searchedAnimes, setSearchedAnimes] = useState([]);
+
+  const [x, setX] = useState(0);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
   // create state to hold saved animeId values
-  const [savedAnimeIds, setAnimeIds] = useState(getSavedAnimeIds());
+  const [savedAnimeIds, setSavedAnimeIds] = useState(getSavedAnimeIds());
+
+  const [saveAnime] = useMutation(SAVE_ANIME);
+
+  useEffect(() => {
+    return () => saveAnimeIds(savedAnimeIds);
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -32,9 +42,10 @@ function Home() {
       const { results } = await response.json();
 
       const animeData = results.map((anime) => ({
-        animeId: anime.id,
+        animeId: anime.mal_id,
         rating: anime.rated || ['No rating to display'],
         title: anime.title,
+        score: anime.score,
         description: anime.synopsis,
         image: anime.image_url || '',
         link: anime.url,
@@ -47,11 +58,45 @@ function Home() {
     }
   };
 
+  // function to handle saving an anime to our database
+  const handleSaveAnime = async (animeId) => {
+    // find the book in `searchedAnime` state by the matching id
+    const animeToSave = searchedAnimes.find(
+      (anime) => anime.animeId === animeId
+    );
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await saveAnime({
+        variables: { ...animeToSave },
+      });
+
+      // if book successfully saves to user's account, save book id to state
+      setSavedAnimeIds([...savedAnimeIds, animeToSave.animeId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const goLeft = () => {
+    setX(x + 100);
+  };
+
+  const goRight = () => {
+    setX(x - 100);
+  };
+
   return (
     <div className="container">
       <section className="header">
         <Nav></Nav>
-        <video class="bg-video" autoPlay muted loop>
+        <video className="bg-video" autoPlay muted loop>
           <source src={video} type="video/mp4" />
           Your browser is not supported!
         </video>
@@ -76,10 +121,14 @@ function Home() {
             ? `Viewing ${searchedAnimes.length} results:`
             : 'Search for a book to begin'}
         </h2>
-        <CardColumns>
+        <CardColumns className="search-container carousel">
           {searchedAnimes.map((anime) => {
             return (
-              <Card key={anime.animeId} border="dark">
+              <Card
+                key={anime.animeId}
+                className="anime-card"
+                style={{ transform: `translateX(${x})%` }}
+              >
                 {anime.image ? (
                   <Card.Img
                     src={anime.image}
@@ -90,14 +139,15 @@ function Home() {
                 <Card.Body>
                   <Card.Title>{anime.title}</Card.Title>
                   <p className="small">Rating: {anime.rating}</p>
+                  <p className="small">Score: {anime.score}/10</p>
                   <Card.Text>{anime.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedAnimeIds?.some(
-                        (savedAnimeId) => savedAnimeIds === anime.animeId
+                        (savedAnimeId) => savedAnimeId === anime.animeId
                       )}
                       className="btn-block btn-info"
-                      // onClick={() => handleSavedAnime(anime.animeId)}
+                      onClick={() => handleSaveAnime(anime.animeId)}
                     >
                       {savedAnimeIds?.some(
                         (savedAnimeId) => savedAnimeId === anime.animeId

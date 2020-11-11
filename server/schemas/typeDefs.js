@@ -5,6 +5,7 @@ const typeDefs = gql`
     animeId: ID
     title: String
     rated: String
+    score: String
     description: String
     image: String
     link: String
@@ -39,6 +40,7 @@ const typeDefs = gql`
       animeId: ID!
       title: String
       rated: String
+      score: String
       description: String
       image: String
       link: String

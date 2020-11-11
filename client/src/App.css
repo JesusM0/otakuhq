@@ -93,3 +93,7 @@ a {
   overflow: hidden;
   object-fit: cover;
 }
+
+.search-container {
+  display: flex;
+}

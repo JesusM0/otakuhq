@@ -8,6 +8,9 @@ const animeSchema = new Schema({
   rated: {
     type: String,
   },
+  score: {
+    type: String,
+  },
   description: {
     type: String,
     required: true,

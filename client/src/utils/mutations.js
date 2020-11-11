@@ -29,6 +29,7 @@ export const SAVE_ANIME = gql`
     $animeId: ID!
     $title: String
     $rated: String
+    $score: String
     $description: String!
     $image: String!
     $link: String
@@ -37,6 +38,7 @@ export const SAVE_ANIME = gql`
       animeId: $animeId
       title: $title
       rated: $rated
+      score: $score
       description: $description
       image: $image
       link: $link
@@ -47,6 +49,7 @@ export const SAVE_ANIME = gql`
         animeId
         title
         rated
+        score
         description
         image
         link
@@ -64,6 +67,7 @@ export const REMOVE_ANIME = gql`
         animeId
         title
         rated
+        score
         description
         image
         link
