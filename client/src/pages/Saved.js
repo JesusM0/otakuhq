@@ -53,7 +53,7 @@ function SavedAnimes() {
     <>
       <h1>Viewing saved Anime!</h1>
       <h2>
-        {userData.savedBooks.length
+        {userData.savedAnimes.length
           ? `Viewing ${userData.savedAnimes.length} saved ${
               userData.savedAnimes.length === 1 ? 'animes' : 'animes'
             }:`
