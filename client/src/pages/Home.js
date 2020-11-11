@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardColumns, Button } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
 import Nav from '../components/Nav';
 import Auth from '../utils/auth';
 import { searchJikanApi } from '../utils/API';
@@ -8,11 +7,14 @@ import { saveAnimeIds, getSavedAnimeIds } from '../utils/localStorage';
 import video from '../imgs/video.mp4';
 import { SAVE_ANIME } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
+import Carousel from 'react-elastic-carousel';
+import Item from '../components/Carousel/item';
+import PopularAnime from '../components/PopularAnime';
+import Footer from '../components/Footer';
 
 function Home() {
   const [searchedAnimes, setSearchedAnimes] = useState([]);
 
-  const [x, setX] = useState(0);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -24,6 +26,13 @@ function Home() {
   useEffect(() => {
     return () => saveAnimeIds(savedAnimeIds);
   });
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -84,14 +93,6 @@ function Home() {
     }
   };
 
-  const goLeft = () => {
-    setX(x + 100);
-  };
-
-  const goRight = () => {
-    setX(x - 100);
-  };
-
   return (
     <div className="container">
       <section className="header">
@@ -122,46 +123,48 @@ function Home() {
             : 'Search for a book to begin'}
         </h2>
         <CardColumns className="search-container carousel">
-          {searchedAnimes.map((anime) => {
-            return (
-              <Card
-                key={anime.animeId}
-                className="anime-card"
-                style={{ transform: `translateX(${x})%` }}
-              >
-                {anime.image ? (
-                  <Card.Img
-                    src={anime.image}
-                    alt={`The cover for ${anime.title}`}
-                    variant="top"
-                  />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{anime.title}</Card.Title>
-                  <p className="small">Rating: {anime.rating}</p>
-                  <p className="small">Score: {anime.score}/10</p>
-                  <Card.Text>{anime.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    <Button
-                      disabled={savedAnimeIds?.some(
-                        (savedAnimeId) => savedAnimeId === anime.animeId
+          <Carousel breakPoints={breakPoints}>
+            {searchedAnimes.map((anime) => {
+              return (
+                <Item>
+                  <Card key={anime.animeId} className="anime-card">
+                    {anime.image ? (
+                      <Card.Img
+                        src={anime.image}
+                        alt={`The cover for ${anime.title}`}
+                        variant="top"
+                      />
+                    ) : null}
+                    <Card.Body>
+                      <Card.Title>{anime.title}</Card.Title>
+                      <p className="small">Rating: {anime.rating}</p>
+                      <p className="small">Score: {anime.score}/10</p>
+                      <Card.Text>{anime.description}</Card.Text>
+                      {Auth.loggedIn() && (
+                        <Button
+                          disabled={savedAnimeIds?.some(
+                            (savedAnimeId) => savedAnimeId === anime.animeId
+                          )}
+                          className="btn-block btn-info"
+                          onClick={() => handleSaveAnime(anime.animeId)}
+                        >
+                          {savedAnimeIds?.some(
+                            (savedAnimeId) => savedAnimeId === anime.animeId
+                          )
+                            ? 'This anime has already been saved!'
+                            : 'Save this anime!'}
+                        </Button>
                       )}
-                      className="btn-block btn-info"
-                      onClick={() => handleSaveAnime(anime.animeId)}
-                    >
-                      {savedAnimeIds?.some(
-                        (savedAnimeId) => savedAnimeId === anime.animeId
-                      )
-                        ? 'This anime has already been saved!'
-                        : 'Save this anime!'}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-            );
-          })}
+                    </Card.Body>
+                  </Card>
+                </Item>
+              );
+            })}
+          </Carousel>
         </CardColumns>
+        <PopularAnime />
       </div>
+      <Footer />
     </div>
   );
 }

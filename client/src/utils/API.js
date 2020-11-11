@@ -5,9 +5,9 @@ export const searchJikanApi = (query) => {
 };
 
 // get Trending anime from Kitsu
-export const getKitsuTrending = () =>
-  fetch('https://kitsu.io/api/edge/trending/anime');
-
+export const getJikanTrending = () => {
+  return fetch('https://api.jikan.moe/v3/top/anime/1/airing');
+};
 // brings up list of all the anime not sorted, at the bottom there is links to first, next, last and are used to see more anime's
 // 10 anime's per response
 export const getKitsuAnime = () => fetch('https://kitsu.io/api/edge/anime');
