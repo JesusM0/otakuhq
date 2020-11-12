@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import Item from '../Carousel/item';
-import { getJikanTrending } from '../../utils/API';
+import { getCategoryFavorites } from '../../utils/API';
 import { Card, CardColumns, Button } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 import { saveAnimeIds, getSavedAnimeIds } from '../../utils/localStorage';
 import { useMutation } from '@apollo/react-hooks';
 import { SAVE_ANIME } from '../../utils/mutations';
 
-const PopularAnime = () => {
+const TopAiring = () => {
   const [searchedAnimes, setSearchedAnimes] = useState([]);
 
   const [savedAnimeIds, setSavedAnimeIds] = useState(getSavedAnimeIds());
@@ -29,7 +29,7 @@ const PopularAnime = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await getJikanTrending();
+        const response = await getCategoryFavorites();
 
         if (!response.ok) {
           throw new Error('something went wrong!');
@@ -129,4 +129,4 @@ const PopularAnime = () => {
   );
 };
 
-export default PopularAnime;
+export default TopAiring;
