@@ -104,6 +104,7 @@ function Home() {
         </video>
         <div className="heading-primary">
           <form className="search-bar" onSubmit={handleFormSubmit}>
+            <label htmlFor="searchInput"></label>
             <input
               className="search-bar-input"
               name="searchInput"
@@ -152,6 +153,7 @@ function Home() {
                             disabled={savedAnimeIds?.some(
                               (savedAnimeId) => savedAnimeId === anime.animeId
                             )}
+                            name="addAnime"
                             className="anime-btn"
                             onClick={() => handleSaveAnime(anime.animeId)}
                           >

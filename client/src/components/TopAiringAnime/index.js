@@ -108,6 +108,7 @@ const TopAiring = () => {
                         disabled={savedAnimeIds?.some(
                           (savedAnimeId) => savedAnimeId === anime.animeId
                         )}
+                        name="addAnime"
                         className="anime-btn"
                         onClick={() => handleSaveAnime(anime.animeId)}
                       >

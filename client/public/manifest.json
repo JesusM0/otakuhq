@@ -24,7 +24,17 @@
     },
     {
       "src": "imgs/otakuhq-logo.png",
+      "sizes": "144x144",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "imgs/otakuhq-logo.png",
       "sizes": "300x111",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "imgs/otakuhq-logo.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
