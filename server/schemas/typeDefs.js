@@ -5,7 +5,8 @@ const typeDefs = gql`
     animeId: ID
     title: String
     rated: String
-    description: Sring
+    score: Float
+    description: String
     image: String
     link: String
   }
@@ -29,6 +30,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
@@ -38,6 +40,7 @@ const typeDefs = gql`
       animeId: ID!
       title: String
       rated: String
+      score: Float
       description: String
       image: String
       link: String

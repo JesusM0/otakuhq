@@ -14,7 +14,7 @@ export const LOGIN_USER = gql`
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(userName: $username, email: $email, password: $password) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -24,12 +24,13 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_BOOK = gql`
+export const SAVE_ANIME = gql`
   mutation saveAnime(
     $animeId: ID!
     $title: String
     $rated: String
-    $description: String!
+    $score: Float
+    $description: String
     $image: String!
     $link: String
   ) {
@@ -37,16 +38,18 @@ export const SAVE_BOOK = gql`
       animeId: $animeId
       title: $title
       rated: $rated
+      score: $score
       description: $description
       image: $image
       link: $link
     ) {
       _id
       username
-      savedBooks {
+      savedAnimes {
         animeId
         title
         rated
+        score
         description
         image
         link
@@ -55,7 +58,7 @@ export const SAVE_BOOK = gql`
   }
 `;
 
-export const REMOVE_BOOK = gql`
+export const REMOVE_ANIME = gql`
   mutation removeAnime($animeId: ID!) {
     removeAnime(animeId: $animeId) {
       _id
@@ -64,6 +67,7 @@ export const REMOVE_BOOK = gql`
         animeId
         title
         rated
+        score
         description
         image
         link

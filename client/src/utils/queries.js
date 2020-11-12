@@ -7,6 +7,7 @@ export const GET_ME = gql`
         animeId
         title
         rated
+        score
         description
         image
         link

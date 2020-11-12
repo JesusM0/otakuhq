@@ -8,9 +8,11 @@ const animeSchema = new Schema({
   rated: {
     type: String,
   },
+  score: {
+    type: String,
+  },
   description: {
     type: String,
-    required: true,
   },
   // mal_id from jikan api
   animeId: {
