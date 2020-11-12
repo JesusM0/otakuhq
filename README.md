@@ -7,6 +7,8 @@ OtakuHQ allows you to search for whatever anime of your choosing using the Jikan
 
 ## Deployment Page Link
 
+https://otakuhq.herokuapp.com/
+
 ## Screenshots
 
 ![OTAKUHQ HOMEPAGE](https://cdn.discordapp.com/attachments/749986989021069372/776544298672848896/unknown.png)
