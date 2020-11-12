@@ -10,12 +10,12 @@
     {
       "src": "static/js/imgs/otakuhq-logo-192x192.png",
       "sizes": "192x192",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "static/js/imgs/otakuhq-logo.png",
       "sizes": "300x111",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "static/js/imgs/otakuhq-logo-512x512.png",
