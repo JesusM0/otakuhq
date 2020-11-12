@@ -39,6 +39,7 @@ const PopularAnime = () => {
           title: anime.title,
           score: anime.score,
           image: anime.image_url || '',
+          link: anime.url,
         }));
 
         setSearchedAnimes(animeData);
@@ -77,29 +78,31 @@ const PopularAnime = () => {
   return (
     <div>
       <h2>Trending Anime</h2>
-      <CardColumns className="search-container carousel">
+      <CardColumns className='search-container carousel'>
         <Carousel breakPoints={breakPoints}>
           {searchedAnimes.map((anime) => {
             return (
               <Item>
-                <Card key={anime.animeId} className="anime-card">
+                <Card key={anime.animeId} className='anime-card'>
                   {anime.image ? (
-                    <Card.Img
-                      src={anime.image}
-                      alt={`The cover for ${anime.title}`}
-                      variant="top"
-                    />
+                    <a href={anime.link}>
+                      <Card.Img
+                        src={anime.image}
+                        alt={`The cover for ${anime.title}`}
+                        variant='top'
+                      />{' '}
+                    </a>
                   ) : null}
                   <Card.Body>
                     <Card.Title>{anime.title}</Card.Title>
-                    <p className="small">Rating: {anime.rating}</p>
-                    <p className="small">Score: {anime.score}/10</p>
+                    <p className='small'>Rating: {anime.rating}</p>
+                    <p className='small'>Score: {anime.score}/10</p>
                     {Auth.loggedIn() && (
                       <Button
                         disabled={savedAnimeIds?.some(
                           (savedAnimeId) => savedAnimeId === anime.animeId
                         )}
-                        className="btn-block btn-info"
+                        className='btn-block btn-info'
                         onClick={() => handleSaveAnime(anime.animeId)}
                       >
                         {savedAnimeIds?.some(

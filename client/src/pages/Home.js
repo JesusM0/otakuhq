@@ -123,48 +123,48 @@ function Home() {
             ? `Viewing ${searchedAnimes.length} results:`
             : 'Search Anime!'}
         </h2>
-        <Link to=''>
-          <CardColumns className='search-container carousel'>
-            <Carousel breakPoints={breakPoints}>
-              {searchedAnimes.map((anime) => {
-                return (
-                  <Item>
-                    <Card key={anime.animeId} className='anime-card'>
-                      {anime.image ? (
+        <CardColumns className='search-container carousel'>
+          <Carousel breakPoints={breakPoints}>
+            {searchedAnimes.map((anime) => {
+              return (
+                <Item>
+                  <Card key={anime.animeId} className='anime-card'>
+                    {anime.image ? (
+                      <a href={anime.link}>
                         <Card.Img
                           src={anime.image}
                           alt={`The cover for ${anime.title}`}
                           variant='top'
-                        />
-                      ) : null}
-                      <Card.Body>
-                        <Card.Title>{anime.title}</Card.Title>
-                        <p className='small'>Rating: {anime.rating}</p>
-                        <p className='small'>Score: {anime.score}/10</p>
-                        <Card.Text>{anime.description}</Card.Text>
-                        {Auth.loggedIn() && (
-                          <Button
-                            disabled={savedAnimeIds?.some(
-                              (savedAnimeId) => savedAnimeId === anime.animeId
-                            )}
-                            className='btn-block btn-info'
-                            onClick={() => handleSaveAnime(anime.animeId)}
-                          >
-                            {savedAnimeIds?.some(
-                              (savedAnimeId) => savedAnimeId === anime.animeId
-                            )
-                              ? 'This anime has already been saved!'
-                              : 'Save this anime!'}
-                          </Button>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Item>
-                );
-              })}
-            </Carousel>
-          </CardColumns>
-        </Link>
+                        />{' '}
+                      </a>
+                    ) : null}
+                    <Card.Body>
+                      <Card.Title>{anime.title}</Card.Title>
+                      <p className='small'>Rating: {anime.rating}</p>
+                      <p className='small'>Score: {anime.score}/10</p>
+                      <Card.Text>{anime.description}</Card.Text>
+                      {Auth.loggedIn() && (
+                        <Button
+                          disabled={savedAnimeIds?.some(
+                            (savedAnimeId) => savedAnimeId === anime.animeId
+                          )}
+                          className='btn-block btn-info'
+                          onClick={() => handleSaveAnime(anime.animeId)}
+                        >
+                          {savedAnimeIds?.some(
+                            (savedAnimeId) => savedAnimeId === anime.animeId
+                          )
+                            ? 'This anime has already been saved!'
+                            : 'Save this anime!'}
+                        </Button>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Item>
+              );
+            })}
+          </Carousel>
+        </CardColumns>
         <PopularAnime />
       </div>
       <Footer />
