@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-function Signup(props) {
+function Signup() {
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -34,63 +34,49 @@ function Signup(props) {
   };
 
   return (
-    <div className='split-screen'>
-      <div className='lefty'>
-        <section className='copy'></section>
-      </div>
-      <div className='right'>
-        <form>
-          <section className='copy'>
+    <div className="split-screen">
+      <div className="lefty signup"></div>
+      <div className="right">
+        <form onSubmit={handleFormSubmit}>
+          <section className="copy">
             <h2>Sign Up!</h2>
-            <div className='login-container'>
+            <div className="login-container">
               <p>
                 Alrady Have An Account?{' '}
-                <Link as={Link} to='/login'>
+                <Link as={Link} to="/login">
                   Login
                 </Link>
               </p>
               <p>
                 Not Ready For An Account?{' '}
-                <Link as={Link} to='/'>
+                <Link as={Link} to="/">
                   Back To Home!
                 </Link>
               </p>
             </div>
           </section>
-          <div className='input-container name'>
-            <label htmlFor='username'>Username:</label>
-            <input
-              className='fname'
-              placeholder=''
-              name='username'
-              type='username'
-              id='username'
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className='input-container email'>
-            <label htmlFor='email'>Email:</label>
-            <input
-              className='email'
-              placeholder=''
-              name='email'
-              type='email'
-              id='email'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='input-container password'>
-            <label htmlFor='password'>Password:</label>
-            <input
-              className='password'
-              placeholder=''
-              name='password'
-              type='password'
-              id='password'
-              onChange={handleChange}
-            />
-          </div>
-          <button className='signup-btn' type='submit'>
+          <label htmlFor="username">Username:</label>
+          <input
+            placeholder="Please Enter A Username"
+            name="username"
+            type="username"
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="email">Email:</label>
+          <input
+            placeholder="Please Enter A Valid Email"
+            name="email"
+            type="email"
+            onChange={handleChange}
+          />
+          <label htmlFor="password">Password:</label>
+          <input
+            placeholder="Please Enter A Password"
+            name="password"
+            type="password"
+            onChange={handleChange}
+          />
+          <button className="signup-btn" type="submit">
             Sign Up!
           </button>
         </form>

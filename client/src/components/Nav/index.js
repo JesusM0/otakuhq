@@ -13,11 +13,11 @@ function Nav() {
         <ul className="nav">
           <li>
             <Link as={Link} to="/saved">
-              See your Anime List
+              See Your Anime List
             </Link>
           </li>
           <li>
-            <a href="/" onClick={() => Auth.logout}>
+            <a href="/" onClick={Auth.logout}>
               Logout
             </a>
           </li>
@@ -30,7 +30,7 @@ function Nav() {
         <div className="logo-box">
           <img src={logo} alt="logo" className="logo" />
         </div>
-        <ul className="nav signup">
+        <ul className="nav">
           <li>
             <Link to="/signup">Signup</Link>
           </li>

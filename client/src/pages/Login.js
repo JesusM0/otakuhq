@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-function Login(props) {
+function Login() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -30,40 +30,51 @@ function Login(props) {
   };
 
   return (
-    <div className='container'>
-      <Link to='/signup'>SignUp Here!!</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className='flex-row space-between my-2'>
-          <label htmlFor='email'>Email address:</label>
+    <div className="split-screen">
+      <div className="lefty login"></div>
+      <div className="right">
+        <form onSubmit={handleFormSubmit}>
+          <section className="copy">
+            <h2>Login!</h2>
+            <div className="login-container">
+              <p>
+                Don't Have An Account?{' '}
+                <Link as={Link} to="/signup">
+                  Signup
+                </Link>
+              </p>
+              <p>
+                Just Browsing?{' '}
+                <Link as={Link} to="/">
+                  Back To Home!
+                </Link>
+              </p>
+            </div>
+          </section>
+          <label htmlFor="email">Email address:</label>
           <input
-            placeholder='thisisnotmyemail@test.com'
-            name='email'
-            type='email'
-            id='email'
+            placeholder="Please Enter Your Email"
+            name="email"
+            type="email"
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label htmlFor='pasword'>Password:</label>
+          <label htmlFor="pasword">Password:</label>
           <input
-            placeholder='******'
-            name='password'
-            type='password'
-            id='password'
+            placeholder="******"
+            name="password"
+            type="password"
             onChange={handleChange}
           />
-        </div>
-        {error ? (
-          <div>
-            <p className='error-text'>Incorrect Passord or Email.</p>
-          </div>
-        ) : null}
-        <div className='flex-row flex-end'>
-          <button type='submit'>Submit</button>
-        </div>
-      </form>
+          {error ? (
+            <div>
+              <p className="error-text">Incorrect Credentials.</p>
+            </div>
+          ) : null}
+          <button className="signup-btn" type="submit">
+            Login!
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

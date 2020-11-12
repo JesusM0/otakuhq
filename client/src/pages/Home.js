@@ -120,7 +120,7 @@ function Home() {
         <h2 className="title">
           {searchedAnimes.length
             ? `Viewing ${searchedAnimes.length} results:`
-            : 'Search Anime!'}
+            : ''}
         </h2>
         <CardColumns className="search-container carousel">
           {searchedAnimes.length ? (
@@ -152,7 +152,7 @@ function Home() {
                             disabled={savedAnimeIds?.some(
                               (savedAnimeId) => savedAnimeId === anime.animeId
                             )}
-                            className="btn-block btn-info"
+                            className="anime-btn"
                             onClick={() => handleSaveAnime(anime.animeId)}
                           >
                             {savedAnimeIds?.some(

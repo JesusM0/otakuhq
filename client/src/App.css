@@ -26,7 +26,7 @@ nav {
   font-size: 2.5rem;
   display: flex;
   justify-content: space-evenly;
-  width: 20%;
+  width: 30%;
 }
 
 a {
@@ -41,7 +41,7 @@ a:hover {
 }
 
 .header {
-  height: 70vh;
+  height: 80vh;
   background-image: linear-gradient(to right bottom, #dd97ddc0, #6f256fbb);
   background-size: cover;
   background-position: top;
@@ -85,13 +85,17 @@ a:hover {
   border-radius: 1.25rem;
   width: 50rem;
   height: 5rem;
+  text-align: center;
 }
 
 .search-bar-input:placeholder-shown {
   text-align: center;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 .search-bar-input:focus {
+  text-align: center;
   outline: none;
   background-color: lightgrey;
 }
@@ -198,18 +202,20 @@ a:hover {
   text-align: center;
 }
 
-.signup-form {
-  width: 50%;
-  position: absolute;
-  right: 0px;
-  height: 100%;
+.anime-btn {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.anime-btn::after {
+  background-color: lightgray;
 }
 
 footer {
   background: linear-gradient(
     to right bottom,
-    rgb(115, 107, 167),
-    rgb(165, 96, 245)
+    rgb(117, 98, 238),
+    rgb(118, 39, 209)
   );
   width: 100%;
   padding: 3rem 2.5rem;
@@ -244,6 +250,8 @@ footer a {
 .title {
   padding-top: 1.5rem;
   text-align: center;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 .slider {
@@ -271,18 +279,23 @@ footer a {
 }
 
 .lefty {
-  height: 200px;
+  height: 20rem;
 }
 
-.lefy,
+.lefty,
 .right {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.lefty {
-  background: url(./imgs/anime.jpg);
+.signup {
+  background: url(./imgs/anime-signup.jpg);
+  background-size: cover;
+}
+
+.login {
+  background: url(./imgs/anime-login.png);
   background-size: cover;
 }
 
@@ -292,11 +305,11 @@ footer a {
 
 .right .copy p {
   margin: 1.5rem 0;
-  font-size: 0.8757rem;
+  font-size: 1.25rem;
 }
 
 .right form {
-  width: 328px;
+  width: 35rem;
 }
 
 .split-screen form input[type='username'],
@@ -305,17 +318,20 @@ form input[type='password'] {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: 1px solid #c4c4c4;
-  padding: 1em;
+  padding: 1rem;
   margin-bottom: 1.25rem;
-  font-size: 0.8757rem;
+  font-size: 1.25rem;
+}
+.split-screen form input:focus {
+  outline: none;
 }
 
 .split-screen label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 1.25rem;
 }
 
 .signup-btn {
@@ -324,11 +340,17 @@ form input[type='password'] {
   font-weight: 700;
   color: rgb(17, 17, 17);
   border: none;
-  padding: 0.5rem;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1rem;
+  transition: all 1s;
+}
+
+.signup-btn:visited,
+.signup-btn::after {
+  outline: none;
 }
 
 .signup-btn:hover {

@@ -80,35 +80,35 @@ const TopAiring = () => {
 
   return (
     <div>
-      <h2 className='title'>Trending Anime</h2>
-      <CardColumns className='search-container carousel'>
-        <Carousel className='slider' breakPoints={breakPoints}>
+      <h2 className="title">Trending Anime</h2>
+      <CardColumns className="search-container carousel">
+        <Carousel className="slider" breakPoints={breakPoints}>
           {searchedAnimes.map((anime) => {
             return (
               <Item key={anime.animeId}>
-                <Card className='anime-card'>
+                <Card className="anime-card">
                   {anime.image ? (
                     <a
                       href={anime.link}
-                      target='_blank'
-                      rel='noopener noreferrer'
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <Card.Img
                         src={anime.image}
                         alt={`The cover for ${anime.title}`}
-                        variant='top'
+                        variant="top"
                       />{' '}
                     </a>
                   ) : null}
                   <Card.Body>
                     <Card.Title>{anime.title}</Card.Title>
-                    <p className='small'>Score: {anime.score}/10</p>
+                    <p className="small">Score: {anime.score}/10</p>
                     {Auth.loggedIn() && (
                       <Button
                         disabled={savedAnimeIds?.some(
                           (savedAnimeId) => savedAnimeId === anime.animeId
                         )}
-                        className='btn-block btn-info'
+                        className="anime-btn"
                         onClick={() => handleSaveAnime(anime.animeId)}
                       >
                         {savedAnimeIds?.some(
