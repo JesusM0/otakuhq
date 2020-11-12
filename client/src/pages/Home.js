@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardColumns, Button } from 'react-bootstrap';
 import Nav from '../components/Nav';
 import Auth from '../utils/auth';
-import { Link } from 'react-router-dom';
 import { searchJikanApi } from '../utils/API';
 import { saveAnimeIds, getSavedAnimeIds } from '../utils/localStorage';
 import video from '../imgs/video.mp4';
@@ -12,6 +11,7 @@ import Carousel from 'react-elastic-carousel';
 import Item from '../components/Carousel/item';
 import PopularAnime from '../components/PopularAnime';
 import Footer from '../components/Footer';
+import TopAiring from '../components/TopAiringAnime';
 
 function Home() {
   const [searchedAnimes, setSearchedAnimes] = useState([]);
@@ -95,77 +95,85 @@ function Home() {
   };
 
   return (
-    <div className='container'>
-      <section className='header'>
+    <div className="container">
+      <section className="header">
         <Nav></Nav>
-        <video className='bg-video' autoPlay muted loop>
-          <source src={video} type='video/mp4' />
+        <video className="bg-video" autoPlay muted loop>
+          <source src={video} type="video/mp4" />
           Your browser is not supported!
         </video>
-        <div className='heading-primary'>
-          <form className='search-bar' onSubmit={handleFormSubmit}>
+        <div className="heading-primary">
+          <form className="search-bar" onSubmit={handleFormSubmit}>
             <input
-              className='heading-search-bar'
-              name='searchInput'
-              type='text'
+              className="search-bar-input"
+              name="searchInput"
+              type="text"
               value={searchInput}
+              placeholder="Search anime to begin!"
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button className='heading-search-btn' type='submit'>
-              Search
-            </button>
+            <button className="heading-search-btn btn btn-white">Search</button>
           </form>
         </div>
       </section>
       <div>
-        <h2>
+        <h2 className="title">
           {searchedAnimes.length
             ? `Viewing ${searchedAnimes.length} results:`
             : 'Search Anime!'}
         </h2>
-        <CardColumns className='search-container carousel'>
-          <Carousel breakPoints={breakPoints}>
-            {searchedAnimes.map((anime) => {
-              return (
-                <Item>
-                  <Card key={anime.animeId} className='anime-card'>
-                    {anime.image ? (
-                      <a href={anime.link}>
-                        <Card.Img
-                          src={anime.image}
-                          alt={`The cover for ${anime.title}`}
-                          variant='top'
-                        />{' '}
-                      </a>
-                    ) : null}
-                    <Card.Body>
-                      <Card.Title>{anime.title}</Card.Title>
-                      <p className='small'>Rating: {anime.rating}</p>
-                      <p className='small'>Score: {anime.score}/10</p>
-                      <Card.Text>{anime.description}</Card.Text>
-                      {Auth.loggedIn() && (
-                        <Button
-                          disabled={savedAnimeIds?.some(
-                            (savedAnimeId) => savedAnimeId === anime.animeId
-                          )}
-                          className='btn-block btn-info'
-                          onClick={() => handleSaveAnime(anime.animeId)}
+        <CardColumns className="search-container carousel">
+          {searchedAnimes.length ? (
+            <Carousel className="slider" breakPoints={breakPoints}>
+              {searchedAnimes.map((anime) => {
+                return (
+                  <Item key={anime.animeId}>
+                    <Card className="anime-card">
+                      {anime.image ? (
+                        <a
+                          href={anime.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          {savedAnimeIds?.some(
-                            (savedAnimeId) => savedAnimeId === anime.animeId
-                          )
-                            ? 'This anime has already been saved!'
-                            : 'Save this anime!'}
-                        </Button>
-                      )}
-                    </Card.Body>
-                  </Card>
-                </Item>
-              );
-            })}
-          </Carousel>
+                          <Card.Img
+                            src={anime.image}
+                            alt={`The cover for ${anime.title}`}
+                            variant="top"
+                          />{' '}
+                        </a>
+                      ) : null}
+                      <Card.Body>
+                        <Card.Title>{anime.title}</Card.Title>
+                        <p className="small">Rating: {anime.rating}</p>
+                        <p className="small">Score: {anime.score}/10</p>
+                        <Card.Text>{anime.description}</Card.Text>
+                        {Auth.loggedIn() && (
+                          <Button
+                            disabled={savedAnimeIds?.some(
+                              (savedAnimeId) => savedAnimeId === anime.animeId
+                            )}
+                            className="btn-block btn-info"
+                            onClick={() => handleSaveAnime(anime.animeId)}
+                          >
+                            {savedAnimeIds?.some(
+                              (savedAnimeId) => savedAnimeId === anime.animeId
+                            )
+                              ? 'This anime has already been saved!'
+                              : 'Save this anime!'}
+                          </Button>
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Item>
+                );
+              })}
+            </Carousel>
+          ) : (
+            ''
+          )}
         </CardColumns>
         <PopularAnime />
+        <TopAiring />
       </div>
       <Footer />
     </div>

@@ -9,8 +9,8 @@ function Footer() {
         <a href='https://github.com/junioresc'>Junior Escobar</a>
         <a href='https://github.com/Kos-MosV4'>Jesus Molina</a>
       </div>
-      <div>
-        <a href='#'>Read Our Privacy Policy</a>
+      <div className="copyright">
+        <a href="#">Read Our Privacy Policy</a>
         <br />
         &copy; 2020 OtakuHQ, Inc.
       </div>
