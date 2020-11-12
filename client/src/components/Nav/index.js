@@ -1,9 +1,11 @@
 import React from 'react';
 import Auth from '../../utils/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../imgs/otakuhq-logo.png';
 
 function Nav() {
+  const location = useLocation();
+  console.log(location);
   if (Auth.loggedIn()) {
     return (
       <nav>
@@ -11,11 +13,17 @@ function Nav() {
           <img src={logo} alt="logo" className="logo" />
         </div>
         <ul className="nav">
-          <li>
-            <Link as={Link} to="/saved">
-              See Your Anime List
-            </Link>
-          </li>
+          {location.pathname === '/saved' ? (
+            <li>
+              <Link to="/">Back To Home</Link>
+            </li>
+          ) : (
+            <li>
+              <Link as={Link} to="/saved">
+                See Your Anime List
+              </Link>
+            </li>
+          )}
           <li>
             <a href="/" onClick={Auth.logout}>
               Logout

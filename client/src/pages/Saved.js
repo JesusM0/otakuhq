@@ -5,8 +5,11 @@ import Auth from '../utils/auth';
 import { removeAnimeId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_ME } from '../utils/queries';
-import { SAVE_ANIME } from '../utils/mutations';
 import { REMOVE_ANIME } from '../utils/mutations';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
+import Carousel from 'react-elastic-carousel';
+import Item from '../components/Carousel/item';
 
 function SavedAnimes() {
   const { loading, data } = useQuery(GET_ME);
@@ -49,10 +52,19 @@ function SavedAnimes() {
     return <h2>LOADING...</h2>;
   }
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
+
   return (
-    <>
-      <h1>Viewing saved Anime!</h1>
-      <h2>
+    <div className="container">
+      <section className="header saved">
+        <Nav />
+      </section>
+      <h2 className="title">
         {userData.savedAnimes.length
           ? `Viewing ${userData.savedAnimes.length} saved ${
               userData.savedAnimes.length === 1 ? 'animes' : 'animes'
@@ -60,32 +72,46 @@ function SavedAnimes() {
           : 'You have no saved Anime!'}
       </h2>
       <CardColumns>
-        {userData.savedAnimes.map((anime) => {
-          return (
-            <Card key={anime.animeId} border='dark'>
-              {anime.image ? (
-                <Card.Img
-                  src={anime.image}
-                  alt={`The cover for ${anime.title}`}
-                  variant='top'
-                />
-              ) : null}
-              <Card.Body>
-                <Card.Title>{anime.title}</Card.Title>
-                <Card.Text>{anime.description}</Card.Text>
-                <Button
-                  className='btn-block btn-danger'
-                  onClick={() => handleDeleteAnime(anime.animeId)}
-                >
-                  Delete this Anime!
-                </Button>
-              </Card.Body>
-            </Card>
-          );
-        })}
+        {userData.savedAnimes.length ? (
+          <Carousel className="slider" breakPoints={breakPoints}>
+            {userData.savedAnimes.map((anime) => {
+              return (
+                <Item key={anime.animeId}>
+                  <Card className="anime-card">
+                    {anime.image ? (
+                      <a
+                        href={anime.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Card.Img
+                          src={anime.image}
+                          alt={`The cover for ${anime.title}`}
+                          variant="top"
+                        />
+                      </a>
+                    ) : null}
+                    <Card.Body>
+                      <Card.Title>{anime.title}</Card.Title>
+                      <Card.Text>{anime.description}</Card.Text>
+                      <Button
+                        className="anime-btn delete"
+                        onClick={() => handleDeleteAnime(anime.animeId)}
+                      >
+                        Delete this Anime!
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Item>
+              );
+            })}
+          </Carousel>
+        ) : (
+          ''
+        )}
       </CardColumns>
-      <Link to='/'>Back To Home</Link>
-    </>
+      <Footer />
+    </div>
   );
 }
 

@@ -49,6 +49,21 @@ a:hover {
   clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
 }
 
+.saved {
+  background-image: linear-gradient(to right bottom, #dd97ddc0, #6f256fbb),
+    url(./imgs/anime-saved.jpg);
+  height: 65vh;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+}
+
 .logo-box {
   position: absolute;
   top: 4rem;
@@ -205,17 +220,22 @@ a:hover {
 .anime-btn {
   margin-top: 1rem;
   font-size: 1.4rem;
+  transition: all 0.2s;
 }
 
 .anime-btn::after {
   background-color: lightgray;
 }
 
+.delete::after {
+  background-color: red;
+}
+
 footer {
   background: linear-gradient(
     to right bottom,
-    rgb(117, 98, 238),
-    rgb(118, 39, 209)
+    rgb(207, 133, 230),
+    rgb(169, 100, 190)
   );
   width: 100%;
   padding: 3rem 2.5rem;
@@ -271,6 +291,7 @@ footer a {
 
 .split-screen a {
   text-decoration: none;
+  transition: all 0.5s;
 }
 
 .split-screen a:hover {
@@ -295,7 +316,7 @@ footer a {
 }
 
 .login {
-  background: url(./imgs/anime-login.png);
+  background: url(./imgs/anime-login.jpg);
   background-size: cover;
 }
 
@@ -312,9 +333,9 @@ footer a {
   width: 35rem;
 }
 
-.split-screen form input[type='username'],
-form input[type='email'],
-form input[type='password'] {
+.split-screen form input[name='username'],
+input[name='email'],
+input[name='password'] {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -324,7 +345,9 @@ form input[type='password'] {
   margin-bottom: 1.25rem;
   font-size: 1.25rem;
 }
-.split-screen form input:focus {
+.split-screen form input[type='username']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
   outline: none;
 }
 
@@ -372,3 +395,48 @@ form input[type='password'] {
 }
 
 /* Sign Up Form Ends */
+
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+  }
+  footer div {
+    text-align: center;
+  }
+  .credits {
+    margin: 0;
+    padding: 1rem 0 1rem 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .logo-box {
+    top: 12rem;
+    left: 8rem;
+  }
+  .search-bar-input {
+    width: 30rem;
+  }
+  .nav {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .logo-box {
+    top: 12rem;
+    left: 3.5rem;
+  }
+  footer h2 {
+    color: black;
+    font-size: 1.75rem;
+    margin: 0;
+  }
+}

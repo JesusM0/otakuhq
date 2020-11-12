@@ -42,7 +42,7 @@ function Signup() {
             <h2>Sign Up!</h2>
             <div className="login-container">
               <p>
-                Alrady Have An Account?{' '}
+                Already Have An Account?{' '}
                 <Link as={Link} to="/login">
                   Login
                 </Link>
