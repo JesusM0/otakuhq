@@ -345,9 +345,9 @@ input[name='password'] {
   margin-bottom: 1.25rem;
   font-size: 1.25rem;
 }
-.split-screen form input[type='username']:focus,
-input[type='email']:focus,
-input[type='password']:focus {
+.split-screen form input[name='username']:focus,
+input[name='email']:focus,
+input[name='password']:focus {
   outline: none;
 }
 

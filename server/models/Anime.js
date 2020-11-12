@@ -13,7 +13,6 @@ const animeSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   // mal_id from jikan api
   animeId: {

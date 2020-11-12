@@ -5,7 +5,6 @@ import logo from '../../imgs/otakuhq-logo.png';
 
 function Nav() {
   const location = useLocation();
-  console.log(location);
   if (Auth.loggedIn()) {
     return (
       <nav>

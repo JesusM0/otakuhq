@@ -144,8 +144,8 @@ function Home() {
                       ) : null}
                       <Card.Body>
                         <Card.Title>{anime.title}</Card.Title>
-                        <p className="small">Rating: {anime.rating}</p>
-                        <p className="small">Score: {anime.score}/10</p>
+                        <p>Rating: {anime.rating}</p>
+                        <p>Score: {anime.score}/10</p>
                         <Card.Text>{anime.description}</Card.Text>
                         {Auth.loggedIn() && (
                           <Button

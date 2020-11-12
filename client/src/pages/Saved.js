@@ -1,6 +1,5 @@
 import React from 'react';
 import { CardColumns, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 import { removeAnimeId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -93,6 +92,7 @@ function SavedAnimes() {
                     ) : null}
                     <Card.Body>
                       <Card.Title>{anime.title}</Card.Title>
+                      <p>Score: {anime.score}/10</p>
                       <Card.Text>{anime.description}</Card.Text>
                       <Button
                         className="anime-btn delete"

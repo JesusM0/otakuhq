@@ -30,7 +30,7 @@ export const SAVE_ANIME = gql`
     $title: String
     $rated: String
     $score: Float
-    $description: String!
+    $description: String
     $image: String!
     $link: String
   ) {
