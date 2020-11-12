@@ -34,15 +34,14 @@ function Signup(props) {
   };
 
   return (
-    <div className='container my-1'>
+    <div className=''>
       <Link to='/login'>Login!</Link>
-
       <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form className='signup-form' onSubmit={handleFormSubmit}>
         <div className='flex-row space-between my-2'>
           <label htmlFor='username'>Username:</label>
           <input
-            placeholder='username'
+            placeholder=''
             name='username'
             type='username'
             id='username'
@@ -52,7 +51,7 @@ function Signup(props) {
         <div className='flex-row space-between my-2'>
           <label htmlFor='email'>Email:</label>
           <input
-            placeholder='youremail@test.com'
+            placeholder=''
             name='email'
             type='email'
             id='email'
@@ -62,7 +61,7 @@ function Signup(props) {
         <div className='flex-row space-between my-2'>
           <label htmlFor='password'>Password:</label>
           <input
-            placeholder='******'
+            placeholder=''
             name='password'
             type='password'
             id='password'
@@ -73,6 +72,7 @@ function Signup(props) {
           <button type='submit'>Submit</button>
         </div>
       </form>
+      <img></img>
     </div>
   );
 }

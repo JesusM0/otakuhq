@@ -30,7 +30,7 @@ function Nav() {
         <div className="logo-box">
           <img src={logo} alt="logo" className="logo" />
         </div>
-        <ul className="nav">
+        <ul className="nav signup">
           <li>
             <Link to="/signup">Signup</Link>
           </li>

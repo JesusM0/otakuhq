@@ -30,8 +30,14 @@ nav {
 }
 
 a {
-  color: black;
+  color: whitesmoke;
+  font-weight: bolder;
+  font-style: italic;
   text-decoration: none;
+  transition: all 0.25s ease-in;
+}
+a:hover {
+  color: rgba(17, 17, 17, 1);
 }
 
 .header {
@@ -107,10 +113,21 @@ a {
   text-align: center;
 }
 
+.signup-form {
+  width: 50%;
+  position: absolute;
+  right: 0px;
+  height: 100%;
+}
+
 footer {
-  background: linear-gradient(to right bottom, #dd97ddc0, #6f256fbb);
+  background: linear-gradient(
+    to right bottom,
+    rgb(115, 107, 167),
+    rgb(165, 96, 245)
+  );
   width: 100%;
-  padding: 4rem 3.5rem;
+  padding: 3rem 2.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
