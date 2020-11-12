@@ -249,3 +249,104 @@ footer a {
 .slider {
   padding: 1.25rem 0 1.25rem 0;
 }
+
+/* Sign Up Form */
+.split-screen {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-screen h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.split-screen a {
+  text-decoration: none;
+}
+
+.split-screen a:hover {
+  text-decoration: underline;
+  color: rgb(115, 107, 167);
+}
+
+.lefty {
+  height: 200px;
+}
+
+.lefy,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lefty {
+  background: url(./imgs/anime.jpg);
+  background-size: cover;
+}
+
+.right .copy {
+  text-align: center;
+}
+
+.right .copy p {
+  margin: 1.5rem 0;
+  font-size: 0.8757rem;
+}
+
+.right form {
+  width: 328px;
+}
+
+.split-screen form input[type='username'],
+form input[type='email'],
+form input[type='password'] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #c4c4c4;
+  padding: 1em;
+  margin-bottom: 1.25rem;
+  font-size: 0.8757rem;
+}
+
+.split-screen label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.signup-btn {
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  color: rgb(17, 17, 17);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.signup-btn:hover {
+  background: rgb(115, 107, 167);
+  cursor: pointer;
+  color: white;
+}
+@media screen and (min-width: 900px) {
+  .split-screen {
+    flex-direction: row;
+    height: 100vh;
+  }
+  .lefty,
+  .right {
+    display: flex;
+    width: 50%;
+    height: auto;
+  }
+}
+
+/* Sign Up Form Ends */

@@ -34,45 +34,67 @@ function Signup(props) {
   };
 
   return (
-    <div className=''>
-      <Link to='/login'>Login!</Link>
-      <h2>Signup</h2>
-      <form className='signup-form' onSubmit={handleFormSubmit}>
-        <div className='flex-row space-between my-2'>
-          <label htmlFor='username'>Username:</label>
-          <input
-            placeholder=''
-            name='username'
-            type='username'
-            id='username'
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className='flex-row space-between my-2'>
-          <label htmlFor='email'>Email:</label>
-          <input
-            placeholder=''
-            name='email'
-            type='email'
-            id='email'
-            onChange={handleChange}
-          />
-        </div>
-        <div className='flex-row space-between my-2'>
-          <label htmlFor='password'>Password:</label>
-          <input
-            placeholder=''
-            name='password'
-            type='password'
-            id='password'
-            onChange={handleChange}
-          />
-        </div>
-        <div className='flex-row flex-end'>
-          <button type='submit'>Submit</button>
-        </div>
-      </form>
-      <img></img>
+    <div className='split-screen'>
+      <div className='lefty'>
+        <section className='copy'></section>
+      </div>
+      <div className='right'>
+        <form>
+          <section className='copy'>
+            <h2>Sign Up!</h2>
+            <div className='login-container'>
+              <p>
+                Alrady Have An Account?{' '}
+                <Link as={Link} to='/login'>
+                  Login
+                </Link>
+              </p>
+              <p>
+                Not Ready For An Account?{' '}
+                <Link as={Link} to='/'>
+                  Back To Home!
+                </Link>
+              </p>
+            </div>
+          </section>
+          <div className='input-container name'>
+            <label htmlFor='username'>Username:</label>
+            <input
+              className='fname'
+              placeholder=''
+              name='username'
+              type='username'
+              id='username'
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div className='input-container email'>
+            <label htmlFor='email'>Email:</label>
+            <input
+              className='email'
+              placeholder=''
+              name='email'
+              type='email'
+              id='email'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='input-container password'>
+            <label htmlFor='password'>Password:</label>
+            <input
+              className='password'
+              placeholder=''
+              name='password'
+              type='password'
+              id='password'
+              onChange={handleChange}
+            />
+          </div>
+          <button className='signup-btn' type='submit'>
+            Sign Up!
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
