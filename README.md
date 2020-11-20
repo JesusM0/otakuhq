@@ -3,7 +3,7 @@
 ## Description
 
 Have you ever thought about all the anime you're currently watching? Can you remember every single one? Wouldn't it be cool to keep track of all the anime's you're watching all in a single place? Well OtakuHQ is the website made specifically for that. Made by Otakus for other Weebs to enjoy and congregate.</br></br>
-OtakuHQ allows you to search for whatever anime of your choosing using the JikanAPI and displays it for you. There is also section detailing the most popular anime and the current trending anime that is airing on TV. If you create an account and login then you can add anime's to your watch list and once you're done you can delete them from your anime list.
+OtakuHQ allows you to search for whatever anime of your choosing using the JikanAPI and displays it for you. There is also a section detailing the most popular anime and the current trending anime that is airing on TV. If you create an account and login then you can add anime's to your watch list and once you're done you can delete them from your anime list.
 
 ## Deployment Page Link
 
